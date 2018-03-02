@@ -11,7 +11,9 @@ mkdir /var/www/portal
 apt-get update
 apt-get upgrade -y
 
-sudo git clone https://github.com/96boards-projects/smart-portal/tree/master/home_node /var/www/portal
+# clone repository and place it in root's home folder
+cd ~
+sudo git clone https://github.com/96boards-projects/smart-portal/
 
 # install motion
 apt-get install motion
@@ -21,14 +23,14 @@ sed -i 's =no =yes ' /etc/default/motion
 
 # backup and copy configuration file
 mv /etc/motion/motion.conf /etc/motion/motion.conf.bak
-chmod 744 /var/www/portal/_install/motion.conf 
-cp /var/www/portal/install/_motion.conf /etc/motion/motion.conf
+chmod 744 ~/smart-portal/home_node/_install/motion.conf 
+cp ~/smart-portal/home_node/_install/motion.conf /etc/motion/motion.conf
 
 # install mysql
 apt-get install -y mysql-server mysql-client 
 
 # setup database and user
-mysql -r root < /var/www/portal/_install/tables.sql
+mysql -r root < ~/smart-portal/home_node/_install/tables.sql
 
 # install apache2
 apt-get install -y apache2
@@ -67,9 +69,11 @@ apt-get install -y php7.0 php7.0-mysql
 # restart apache
 service apache2 restart
 
-# change permissions and owner
-chmod 750 -r /var/www/portal
-chown -R www-data /var/www/portal
+# remove _install folder, copy to change permissions and owner
+rm -rf ~/smart-portal/home_node/_install
+chmod 750 -r ~/smart-portal/home_node/
+chown -R www-data ~/smart-portal/home_node/
+cp -a ~/smart-portal/home_node/. /var/www/portal/
 
 # create gpio group and add userspace
 groupadd gpio 
@@ -116,7 +120,7 @@ echo "${new_boot}" >> /etc/rc.local
 
 # clean up
 apt-get clean
-rm -r /var/www/portal/_install
+rm -rf ~/smart-portal
 
 
 

@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import serial, sys
 
 # open serial 
@@ -11,8 +13,10 @@ data = data.split(',')[1]
 data = str(int(data, 16))
 
 # store
-f = open('temp_data', 'w')
+f = open('data.txt', 'w+')
 f.write(data)
 
 f.close()
 ser.close()
+
+sys.exit(0)
