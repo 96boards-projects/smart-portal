@@ -14,7 +14,7 @@ This README is still being written.
 
 - [Dragonboard410c](https://www.96boards.org/product/dragonboard410c/)
 - [96Boards Compliant Power Supply](http://www.96boards.org/product/power/)
-- [Grove Seed Sensors Mezzanine] (https://www.96boards.org/product/sensors-mezzanine/)
+- [Grove Seed Sensors Mezzanine](https://www.96boards.org/product/sensors-mezzanine/)
 - Two [Grove mini-servo](https://www.seeedstudio.com/EMAX-9g-ES08A-High-Sensitive-Mini-Servo-p-760.html)
 - 3.3V laser pointer
 - USB Webcam

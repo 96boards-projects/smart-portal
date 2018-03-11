@@ -83,7 +83,7 @@ chmod 750 -r ~/smart-portal/home_node/
 chown -R www-data ~/smart-portal/home_node/
 cp -a ~/smart-portal/home_node/. /var/www/portal/
 
-# create gpio group and add userspace
+# create gpio group and add users
 groupadd gpio 
 usermod -a -G gpio www-data
 usermod -a -G gpio linaro
