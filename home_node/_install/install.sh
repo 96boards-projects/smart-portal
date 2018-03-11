@@ -11,6 +11,9 @@ mkdir /var/www/portal
 apt-get update
 apt-get upgrade -y
 
+# install development packages
+apt-get install -y arduino-mk arduino build-essential autoconf libtool swig3.0 python-dev cmake pkg-config libpcre3-dev
+
 # clone repository and place it in root's home folder
 cd ~
 sudo git clone https://github.com/96boards-projects/smart-portal/
@@ -24,7 +27,7 @@ sed -i 's =no =yes ' /etc/default/motion
 # backup and copy configuration file
 mv /etc/motion/motion.conf /etc/motion/motion.conf.bak
 chmod 744 ~/smart-portal/home_node/_install/motion.conf 
-cp ~/smart-portal/home_node/_install/motion.conf /etc/motion/motion.conf
+mv ~/smart-portal/home_node/_install/motion.conf /etc/motion/motion.conf
 
 # install mysql
 apt-get install -y mysql-server mysql-client 
@@ -69,6 +72,11 @@ apt-get install -y php7.0 php7.0-mysql
 # restart apache
 service apache2 restart
 
+# flash ATMEGA
+cd ~/smart-portal/home_node/_install
+ln -s /usr/share/arduino/Arduino.mk Makefile
+make upload reset_stty
+
 # remove _install folder, copy to change permissions and owner
 rm -rf ~/smart-portal/home_node/_install
 chmod 750 -r ~/smart-portal/home_node/
@@ -89,8 +97,8 @@ new_boot=$(cat <<EOF
 # Export GPIO to userspace
 echo "33" > /sys/class/gpio/export
 echo "34" > /sys/class/gpio/export
-echo "4" > /sys/class/gpio/export
 echo "69" > /sys/class/gpio/export
+echo "12" > /sys/class/gpio/export
 echo "28" > /sys/class/gpio/export
 echo "115" > /sys/class/gpio/export
 echo "13" > /sys/class/gpio/export
@@ -98,8 +106,8 @@ echo "13" > /sys/class/gpio/export
 # Set GPIO direction
 echo "out" > /sys/class/gpio/gpio33/direction
 echo "out" > /sys/class/gpio/gpio34/direction
-echo "out" > /sys/class/gpio/gpio4/direction
 echo "out" > /sys/class/gpio/gpio69/direction
+echo "out" > /sys/class/gpio/gpio12/direction
 echo "out" > /sys/class/gpio/gpio28/direction
 echo "out" > /sys/class/gpio/gpio115/direction
 echo "out" > /sys/class/gpio/gpio13/direction
@@ -109,6 +117,9 @@ chown -R root:gpio /sys/class/gpio
 chmod -R 770 /sys/class/gpio
 chown -R root:gpio /sys/devices/platform/soc/1000000.pinctrl/gpio*
 chmod -R 770 /sys/devices/platform/soc/1000000.pinctrl/gpio*
+
+# Release ATMEGA from reset
+stty -F /dev/tty96B0 -hupcl
 
 # start motion
 motion &
@@ -122,7 +133,6 @@ echo "${new_boot}" >> /etc/rc.local
 apt-get clean
 rm -rf ~/smart-portal
 
-
-
-
-
+echo "Installation complete."
+read -n 1 -s -r -p "Press any key to continue..."
+echo
