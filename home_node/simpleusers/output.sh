@@ -8,10 +8,10 @@ then
 	var=34
 elif [ $1 == 'ypos' ]
 then 
-	var=4
+	var=69
 elif [ $1 == 'yneg' ]
 then 
-	var=69
+	var=12
 elif [ $1 == 'reset' ]
 then
 	var=28

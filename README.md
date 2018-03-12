@@ -14,15 +14,20 @@ This README is still being written.
 
 - [Dragonboard410c](https://www.96boards.org/product/dragonboard410c/)
 - [96Boards Compliant Power Supply](http://www.96boards.org/product/power/)
-- Three [96Boards Carbon IoT boards](https://www.96boards.org/product/carbon/)
-- Three [5V micro-USB battery packs](https://www.adafruit.com/product/1959)
-- Four USB to micro-USB cable
-- Webcam
-- Monitor
-- Temperature sensor
-- [Grove mini-servo](https://www.seeedstudio.com/EMAX-9g-ES08A-High-Sensitive-Mini-Servo-p-760.html)
+- [Grove Seed Sensors Mezzanine](https://www.96boards.org/product/sensors-mezzanine/)
+- Two [Grove mini-servo](https://www.seeedstudio.com/EMAX-9g-ES08A-High-Sensitive-Mini-Servo-p-760.html)
 - 3.3V laser pointer
+- USB Webcam
+- Monitor
+- Two [96Boards Carbon IoT boards](https://www.96boards.org/product/carbon/)
+- Temperature sensor
+- One [5V micro-USB battery packs](https://www.adafruit.com/product/1959)
+- Three USB to micro-USB cable
+- A small ProtoBoard or breadboard
+- Six 10k resistors
+- Jumper wires and header pins
 
 ## 2) Software
 
 See each folder for software requirements and setup. 
+Setup the IoT boards first before working on the home_node

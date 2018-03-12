@@ -45,52 +45,25 @@
 	} // Validation end
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<title></title>
-	  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-	  <style type="text/css">
-
-			* {	margin: 0px; padding: 0px; }
-			body
-			{
-				padding: 30px;
-				font-family: Calibri, Verdana, "Sans Serif";
-				font-size: 12px;
-			}
-			table
-			{
-				width: 800px;
-				margin: 0px auto;
-			}
-
-			th, td
-			{
-				padding: 3px;
-			}
-
-			.right
-			{
-				text-align: right;
-			}
-
-	  	h1
-	  	{
-	  		color: #FF0000;
-	  		border-bottom: 2px solid #000000;
-	  		margin-bottom: 15px;
-	  	}
-
-	  	p { margin: 10px 0px; }
-	  	p.faded { color: #A0A0A0; }
-
-	  </style>
-	</head>
-	<body>
-
-		<h1>Change password for user <?php echo $user["uUsername"]; ?></h1>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset="UTF-8">
+	<title>Login</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<style type="text/css">
+		body{ font: 14px sans-serif; padding: 20px;}
+		.wrapper{ width: 300px;}
+	</style>
+</head>
+<body>
+	<div>
+		<p><a href="home.php" class="btn btn-primary">Home</a>
+		<a href="users.php" class="btn btn-default">Users (admin only)</a>
+		<a href="logout.php" class="btn btn-danger">Logout</a></p>
+	</div>
+<h2>Change password for user <?php echo $user["uUsername"]; ?></h2>
+	<div class="wrapper">
 		<?php if( isset($error) ): ?>
 		<p>
 			<?php echo $error; ?>
@@ -98,17 +71,15 @@
 		<?php endif; ?>
 
 		<form method="post" action="">
-
-			<p>
-				<label for="password">New password:</label><br />
-				<input type="text" name="password" id="password" />
-			</p>
-
-			<p>
-				<input type="submit" name="submit" value="Save" />
-			</p>
-
+            <div class="form-group">
+				<label for="password">New Password:</label><br />
+				<input type="text" name="password" id="password" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<input type="submit" class="btn btn-primary name="submit" value="Save" />
+			</div>
+			
 		</form>
-
-	</body>
+	</div>
+</body>
 </html>

@@ -22,10 +22,11 @@
 	// If the user is logged in, we can safely proceed.
 	$users = $SimpleUsers->getUsers();
 
+	// fork pyserial.py to update data.txt
+    exec('simpleusers/pyserial.py &');
+	
 	// read values from data.txt
 	$lines = file("simpleusers/data.txt");
-//	$file = fopen("/simpleusers/data.txt");
-//	fclose($file);
 
 	// Send POST command to script
 

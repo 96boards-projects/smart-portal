@@ -65,7 +65,6 @@
 <body>
 	<div>
 		<p><a href="home.php" class="btn btn-primary">Home</a>
-		<a href="modules.php" class="btn btn-primary">Modules</a> 
 		<a href="users.php" class="btn btn-default">Users (admin only)</a>
 		<a href="logout.php" class="btn btn-danger">Logout</a></p>
 	</div>

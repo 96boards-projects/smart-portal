@@ -1,6 +1,9 @@
-import serial, sys
+#!/usr/bin/env python
 
-# open serial 
+import serial, sys
+from time import gmtime, strftime
+
+# open serial
 ser = serial.Serial('/dev/ttyUSB0', 115200)
 
 # get data
@@ -12,10 +15,13 @@ data = int(data, 16)
 # convert celsius to fahrenheit
 data = 9.0/5.0 * data + 32
 
+# get time
+time = strftime("%H:%M", gmtime())
+
 # store
 data = str(data)
-f = open('temp_data', 'w')
-f.write(data)
+f = open('data.txt', 'w')
+f.write("Temperature is " + str(data) + " degF at " +str(time))
 
 f.close()
 ser.close()
