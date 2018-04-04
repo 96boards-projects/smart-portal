@@ -117,6 +117,8 @@ chown -R root:gpio /sys/class/gpio
 chmod -R 770 /sys/class/gpio
 chown -R root:gpio /sys/devices/platform/soc/1000000.pinctrl/gpio*
 chmod -R 770 /sys/devices/platform/soc/1000000.pinctrl/gpio*
+chown -R root:gpio /dev/ttyUSB*
+chmod -R 770 /dev/ttyUSB*
 
 # Release ATMEGA from reset
 stty -F /dev/tty96B0 -hupcl
