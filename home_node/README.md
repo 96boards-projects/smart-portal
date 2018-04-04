@@ -143,6 +143,8 @@ chown -R root:gpio /sys/class/gpio
 chmod -R 770 /sys/class/gpio
 chown -R root:gpio /sys/devices/platform/soc/1000000.pinctrl/gpio*
 chmod -R 770 /sys/devices/platform/soc/1000000.pinctrl/gpio*
+chown -R root:gpio /dev/ttyUSB*
+chmod -R 770 /dev/ttyUSB*
 
 # Release ATMEGA from reset
 stty -F /dev/tty96B0 -hupcl
@@ -154,6 +156,10 @@ motion &
 ### 2.3 Additional Configuration
 - Motion configuration file might need to be updated depending on the type of USB webcam used.
 - pyserial.py script assumes that the client IoT board address is /dev/ttyUSB0.
+
+The default login details are as follows:
+username: admin
+password: 123456
 
 Some additional configuration is necessary to access that Dragonboard from the Internet. There are numerous variation and the details are out of scope of this project. Please refer to specific codes / devices for these items:
 - ddclient for DDNS
